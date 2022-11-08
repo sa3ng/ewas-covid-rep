@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "97961949426",
+    "project_id": "ewas-covid-fb",
+    "storage_bucket": "ewas-covid-fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97961949426:android:1f7d35b30aeb4ce168b86b",
+        "android_client_info": {
+          "package_name": "com.mp3.ewas_covid_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97961949426-nd626dslb8dquj1b37434foasi3ibj2a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mp3.ewas_covid_app",
+            "certificate_hash": "07a23da20abb96c663838f8e69ea2f8cb7a805af"
+          }
+        },
+        {
+          "client_id": "97961949426-g7tk4if1sadads5mqv5j5os9qf5tdvkq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATCuejP8Cf1oNXhQIe43Nx0n268254uMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97961949426-g7tk4if1sadads5mqv5j5os9qf5tdvkq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
