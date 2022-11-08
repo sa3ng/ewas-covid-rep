@@ -12,13 +12,6 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        google()  // Google's Maven repository
-        mavenCentral()  // Maven Central repository
-
-    }
-}
 
 plugins {
     id 'com.android.application' version '7.2.1' apply false

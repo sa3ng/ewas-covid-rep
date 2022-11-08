@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".Activities.LoginActivity"
+    >
 
     <ImageView
         android:id="@+id/iv_logo"
@@ -15,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/white" />
+        />
 
     <TextView
         android:id="@+id/tv_appname"
@@ -55,8 +56,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:hint="Password"
+
         app:endIconMode="password_toggle"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_email">
@@ -76,20 +77,20 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:text="Sign in"
-        style="@style/Widget.Material3.Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_password" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:text="Sign up"
-        style="@style/Widget.Material3.Button.TonalButton"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_signin" />
 
@@ -109,7 +110,6 @@
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@color/white"
             android:layout_weight="1"
             android:layout_gravity="center"/>
 
@@ -118,29 +118,28 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:text="OR"
-            android:textColor="@color/white"/>
+            android:text="OR"/>
 
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@color/white"
             android:layout_weight="1"
             android:layout_gravity="center"/>
 
     </LinearLayout>
 
-<!--    <com.google.android.gms.common.SignInButton-->
-<!--        android:id="@+id/btn_google_auth"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:layout_marginStart="24dp"-->
-<!--        android:layout_marginEnd="24dp"-->
-<!--        android:text="Sign up"-->
-<!--        style="@style/Widget.Material3.Button.TonalButton"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/ll_divider" />-->
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_google_auth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Sign up"
+        style="@style/Widget.Material3.Button.TonalButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_divider"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

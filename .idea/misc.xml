@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_login.xml" value="0.15989583333333332" />
+        <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_covid_form.xml" value="0.1" />
+        <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_main.xml" value="0.144" />
       </map>
     </option>
   </component>
