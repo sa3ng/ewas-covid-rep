@@ -5,5 +5,156 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.ProfileActivity">
+    <!--  Main Container for the view  -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp">
+
+            <!-- Personal Information Container -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Background Container -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profile_bg"
+                android:layout_width="match_parent"
+                android:layout_height="245dp"
+                android:background="@drawable/ic_launcher_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--QR Code Location-->
+            <ImageView
+                android:id="@+id/profile_qrcode_location"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="-30dp"
+                android:contentDescription="User QR Code"
+                android:elevation="1dp"
+                android:src="@drawable/qr_temp"
+                app:layout_constraintBottom_toTopOf="@id/profile_card_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!--Card View For User/Org Information-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/profile_card_info"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="200dp"
+                app:cardBackgroundColor="@color/cardview_dark_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!--No Theming yet coz im a dumb bitch-->
+
+                <!--Actual Card Contents-->
+                <!--MarginTop must be adjusted in accordance with above IV marginBottom-->
+                <!--ex. 25dp must be added if bottom margin is 25 to whatever the desired margin-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        style="@style/TextAppearance.Material3.BodyMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Greetings,"
+                        android:textAlignment="center" />
+
+                    <!--View For Username/Org name-->
+                    <TextView
+                        style="@style/TextAppearance.Material3.HeadlineSmall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Username Here"
+                        android:textAlignment="center" />
+
+                    <!--Internal layout for Email and Number-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <TextView
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Email Here"
+                            android:textAlignment="center" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="fill_parent"
+                            android:background="@android:color/white" />
+
+                        <TextView
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Number Here"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
+                    <!--Internal layout for Age and Gender-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingBottom="12dp"
+                        android:weightSum="3">
+
+                        <TextView
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Age"
+                            android:textAlignment="center" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="fill_parent"
+                            android:background="@android:color/white" />
+
+                        <TextView
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Gender"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
