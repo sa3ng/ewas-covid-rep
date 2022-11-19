@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">ewas-covid-app</string>
+
+    <string name="covid_question_1">1. Do you feel ill today, or have you had any of the following symptoms, these last 10 days? \n
+    + Fever \n
+        + Cough \n
+        + Shortness of Breath \n
+        + Fatigue \n
+        + Muscle or Body Aches \n
+        + Head Aches \n
+        + Loss of Taste / Smell \n
+        + Sore Throat \n
+        + Runny Nose \n
+        + Nausea \n
+        + Diarrhea \n</string>
+    <string name="covid_question_2">2. Have you had a POSITIVE test for COVID-19 within the past 10 days? or tested within the past 10 days?</string>
+    <string name="covid_question_3">3. Have you had close contact with a COVID-19 POSITIVE individual within the last 14 days?</string>
+    <string name="covid_question_4">5. Have you been advised to QUARANTINE within the last 14 days?</string>
+
 </resources>
