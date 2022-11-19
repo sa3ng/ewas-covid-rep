@@ -61,4 +61,9 @@
     <color name="md_theme_dark_surfaceTint">#D3BBFF</color>
     <color name="md_theme_dark_outlineVariant">#49454E</color>
     <color name="md_theme_dark_scrim">#000000</color>
+
+    //QR colors
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
 </resources>

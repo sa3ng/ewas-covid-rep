@@ -42,7 +42,7 @@
                 android:layout_marginBottom="-30dp"
                 android:contentDescription="User QR Code"
                 android:elevation="1dp"
-                android:src="@drawable/qr_temp"
+                android:src="@drawable/sample_qr"
                 app:layout_constraintBottom_toTopOf="@id/profile_card_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

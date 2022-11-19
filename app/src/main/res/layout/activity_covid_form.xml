@@ -1,9 +1,334 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.CovidFormActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/iv_signup_logo"
+            android:layout_width="201dp"
+            android:layout_height="134dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ewas_logo_final"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cq1_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_signup_logo">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cq1_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/covid_question_1"
+                android:textAlignment="center"
+                android:textStyle="bold"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RadioGroup
+                android:id="@+id/cq1_rg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                app:layout_constraintTop_toBottomOf="@+id/cq1_label">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cq1_rb_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp">
+
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/q1_yes_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+
+                        app:layout_constraintEnd_toStartOf="@+id/q1_no_btn"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".25" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/q1_no_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/q1_yes_btn"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".25" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cq2_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cq1_cl">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cq2_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:background="@color/md_theme_dark_tertiaryContainer"
+
+
+                android:text="@string/covid_question_2"
+                android:textAlignment="center"
+                android:textStyle="bold"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RadioGroup
+                android:id="@+id/cq2_rg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                app:layout_constraintTop_toBottomOf="@+id/cq2_label">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cq2_rb_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp"
+
+                    app:layout_constraintTop_toBottomOf="@+id/cq2_label">
+
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/q2_yes_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I was Tested"
+
+                        app:layout_constraintEnd_toStartOf="@+id/q2_positive_btn"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/q2_positive_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I was Positive"
+
+                        app:layout_constraintEnd_toEndOf="@id/q2_no_btn"
+                        app:layout_constraintStart_toEndOf="@id/q2_yes_btn"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/q2_no_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/q2_positive_btn"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".20" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cq3_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cq2_cl">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cq3_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:background="@color/md_theme_dark_tertiaryContainer"
+
+                android:text="@string/covid_question_3"
+                android:textAlignment="center"
+                android:textStyle="bold"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RadioGroup
+                android:id="@+id/cq3_rg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                app:layout_constraintTop_toBottomOf="@id/cq3_label">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cq3_rb_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp">
+
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/q3_yes_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+
+
+                        app:layout_constraintEnd_toStartOf="@+id/q3_no_btn"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".25" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/q3_no_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/q3_yes_btn"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".25" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cq4_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cq3_cl">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cq4_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+
+                android:background="@color/md_theme_dark_tertiaryContainer"
+
+                android:text="@string/covid_question_4"
+                android:textAlignment="center"
+                android:textStyle="bold"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RadioGroup
+                android:id="@+id/cq4_rg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                app:layout_constraintTop_toBottomOf="@id/cq4_label">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cq4_rb_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp">
+
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/q4_yes_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+
+                        app:layout_constraintEnd_toStartOf="@+id/q4_no_btn"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".25" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/q4_no_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/q4_yes_btn"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".25" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/submit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="Sign up"
+            android:layout_marginBottom="20dp"
+            style="@style/Widget.Material3.Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cq4_cl"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

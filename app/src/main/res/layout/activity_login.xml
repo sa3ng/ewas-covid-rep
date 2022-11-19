@@ -10,24 +10,14 @@
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="272dp"
+        android:layout_height="272dp"
+        android:src="@drawable/ewas_logo_final"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_appname"
-        style="@style/TextAppearance.Material3.HeadlineLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="EC Cash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"
@@ -40,7 +30,7 @@
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_appname">
+        app:layout_constraintTop_toBottomOf="@id/iv_logo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
