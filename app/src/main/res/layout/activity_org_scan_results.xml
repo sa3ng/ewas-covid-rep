@@ -6,4 +6,148 @@
     android:layout_height="match_parent"
     tools:context=".Activities.OrgScanResultsActivity">
 
+    <!--Text title for the actvity-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/org_scan_results__cntnr_title"
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9">
+
+        <TextView
+            android:id="@+id/org_scan_results__tv_title"
+            style="@style/TextAppearance.Material3.DisplayMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detail Confirmation"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!--Container for the READ-ONLY text fields-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/org_scan_results__cntnr_text_fields"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        app:layout_constraintBottom_toTopOf="@id/org_scan_results__btn_Questionnaire"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/org_scan_results__cntnr_title"
+        app:layout_constraintWidth_percent="0.95">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/org_scan_results__cntnr_text_fields__name"
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/org_scan_results__cntnr_text_fields__age"
+            style="?attr/textInputFilledStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
+            android:hint="Age"
+            app:layout_constraintEnd_toStartOf="@id/org_scan_results__cntnr_text_fields__gender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_scan_results__cntnr_text_fields__name"
+            app:layout_constraintWidth_percent="0.5">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/org_scan_results__cntnr_text_fields__gender"
+            style="?attr/textInputFilledStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Gender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/org_scan_results__cntnr_text_fields__age"
+            app:layout_constraintTop_toBottomOf="@id/org_scan_results__cntnr_text_fields__name"
+            app:layout_constraintWidth_percent="0.5">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/org_scan_results__cntnr_text_fields__email"
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_scan_results__cntnr_text_fields__age">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/org_scan_results__cntnr_text_fields__number"
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_scan_results__cntnr_text_fields__email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Button
+        android:id="@+id/org_scan_results__btn_Questionnaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="Take Questionnaire"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="667dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
