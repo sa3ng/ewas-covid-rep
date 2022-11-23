@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
-
+    <!--THIS ENTIRE PAGE IS FOR THE USER ACCOUNT-->
     <Button
         style="?attr/materialIconButtonStyle"
         android:layout_width="wrap_content"
