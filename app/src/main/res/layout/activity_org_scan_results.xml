@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:padding="20dp"
-        app:layout_constraintBottom_toTopOf="@id/org_scan_results__btn_Questionnaire"
+        app:layout_constraintBottom_toTopOf="@id/org_scan_results__btn_Accept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/org_scan_results__cntnr_title"
@@ -134,20 +134,48 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/org_scan_results__cntnr_text_fields__score"
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="User Score By Survey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_scan_results__cntnr_text_fields__number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <Button
-        android:id="@+id/org_scan_results__btn_Questionnaire"
+        android:id="@+id/org_scan_results__btn_Accept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
-        android:text="Take Questionnaire"
+        android:backgroundTint="@color/md_theme_dark_tertiary"
+        android:text="Accept User"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="667dp" />
+        app:layout_constraintRight_toLeftOf="@id/org_scan_results__btn_Reject" />
+
+    <Button
+        android:id="@+id/org_scan_results__btn_Reject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="@color/md_theme_dark_error"
+        android:text="Reject User"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/org_scan_results__btn_Accept"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
