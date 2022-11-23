@@ -6,6 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
 
+    <TextView
+        android:id="@+id/activity_main__title_tv"
+        style="@style/TextAppearance.Material3.DisplayMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Scan Me"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/activity_main__qr_code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.75" />
+
+    <TextView
+        android:id="@+id/activity_main__username_tv"
+        style="@style/TextAppearance.Material3.DisplayMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/main_activity__name_border"
+        android:text="Username Here"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_main__qr_code"
+        app:layout_constraintWidth_percent="0.88" />
+
+    <ImageView
+        android:id="@+id/activity_main__qr_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/sample_qr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
