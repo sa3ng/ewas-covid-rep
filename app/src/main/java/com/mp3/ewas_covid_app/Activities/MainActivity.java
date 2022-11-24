@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,8 +26,11 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private TextView usernameTV;
     private ImageView userQR;
+    private Button profileBTN;
+    private User curUser;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -41,9 +45,13 @@ public class MainActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         mRef = FirebaseDatabase.getInstance().getReference("ewas-users/" + mUser.getUid());
 
+        //Intent to use later for profile page
+        Intent profileIntent = new Intent(MainActivity.this, ProfileActivity.class);
+
         //initialize
         usernameTV = findViewById(R.id.activity_main__username_tv);
         userQR = findViewById(R.id.activity_main__qr_code);
+        profileBTN = findViewById(R.id.activity_main__profile_btn);
 
         //set image
         Bitmap qrBM = generateBitmap(mUser.getUid(), getBaseContext());
@@ -54,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User um = snapshot.getValue(User.class);
+                curUser = um;
                 usernameTV.setText(um.getName().toUpperCase(Locale.ROOT));
             }
 
@@ -61,6 +70,19 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+        });
+
+
+        //Listeners
+        profileBTN.setOnClickListener(v -> {
+            //Save data locally
+            profileIntent.putExtra("username", curUser.getName());
+            profileIntent.putExtra("email", curUser.getEmail());
+            profileIntent.putExtra("number", curUser.getNumber());
+            profileIntent.putExtra("gender", curUser.getGender());
+            profileIntent.putExtra("age", curUser.getAge().toString());
+
+            startActivity(profileIntent);
         });
 
     }

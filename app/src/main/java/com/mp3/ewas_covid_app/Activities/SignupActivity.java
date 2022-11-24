@@ -23,12 +23,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mp3.ewas_covid_app.Models.Transaction;
 import com.mp3.ewas_covid_app.Models.User;
 import com.mp3.ewas_covid_app.R;
 
+import java.util.ArrayList;
+
 public class SignupActivity extends AppCompatActivity {
 
-    //User Creds
+    //Declarations
     private TextInputLayout tilName;
     private TextInputLayout tilEmail;
     private TextInputLayout tilNumber;
@@ -78,6 +81,7 @@ public class SignupActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         //manageUser(mAuth.getCurrentUser());
                                         createDbInstance(mAuth.getCurrentUser());
+                                        Toast.makeText(SignupActivity.this, "Sign Up Succesful!", Toast.LENGTH_SHORT).show();
                                     }
                                     //catch blocks for firebase exceptions and other possible exceptions
                                     if (!task.isSuccessful()) {
@@ -92,8 +96,6 @@ public class SignupActivity extends AppCompatActivity {
 
                                           //  Log.e("Error what Exception doe?", e.getMessage());
                                         }
-                                    } else {
-                                        Toast.makeText(SignupActivity.this, "Sign Up Succesful!", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }).addOnFailureListener(SignupActivity.this, new OnFailureListener() {
@@ -148,7 +150,9 @@ public class SignupActivity extends AppCompatActivity {
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("ewas-users");
         mRef.child(uid).setValue(um);
 
-        startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+        //For orgTransaction Array
+        mRef.child(uid).child("orgTransactions").setValue(0);
+
         finish();
     }
 }

@@ -77,19 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         //start to new activity
                                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
-                                        //catch blocks for firebase exceptions and other possible exceptions
-//                                        if (!task.isSuccessful()) {
-//                                            try {
-//                                                throw task.getException();
-//                                            } catch (FirebaseAuthException e) {
-//                                                Toast.makeText(LoginActivity.this, getMessageFromErrorCode(e.getErrorCode()), Toast.LENGTH_SHORT).show();
-//                                                //  Log.e("Password weak?",e.getErrorCode());
-//                                            } catch (Exception e) {
-//
-//                                                //  Log.e("Error what Exception doe?", e.getMessage());
-//                                            }
-//                                        }
+                                        finish();
 
                                     } else {
                                         try {
@@ -98,7 +86,6 @@ public class LoginActivity extends AppCompatActivity {
                                             Toast.makeText(LoginActivity.this, getMessageFromErrorCode(e.getErrorCode()), Toast.LENGTH_SHORT).show();
                                             //  Log.e("Password weak?",e.getErrorCode());
                                         } catch (Exception e) {
-
                                             //  Log.e("Error what Exception doe?", e.getMessage());
                                         }
                                     }

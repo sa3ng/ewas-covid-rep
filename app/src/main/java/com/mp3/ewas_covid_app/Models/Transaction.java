@@ -5,6 +5,8 @@ public class Transaction {
     String date;
     String time;
 
+    public Transaction(){}
+
     public Transaction(String name, String date, String time){
         this.name = name;
         this.date = date;

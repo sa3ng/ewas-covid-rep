@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.mp3.ewas_covid_app.Models.Transaction;
 import com.mp3.ewas_covid_app.R;
@@ -16,6 +17,13 @@ import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private TextView nameTV;
+    private TextView emailTV;
+    private TextView ageTV;
+    private TextView numberTV;
+    private TextView genderTV;
+    private Bundle profileExtras;
+
     private ArrayList<Transaction> orgArrayList;
     private RecyclerView userTransac_rv;
 
@@ -24,9 +32,26 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        //initialize
+        nameTV = findViewById(R.id.tv_user_name);
+        emailTV = findViewById(R.id.tv_email);
+        numberTV = findViewById(R.id.tv_contact_num);
+        ageTV = findViewById(R.id.tv_ageStr);
+        genderTV = findViewById(R.id.tv_gender);
         orgArrayList = new ArrayList<>();
-
         userTransac_rv = findViewById(R.id.rv_user_transac);
+
+        //get and set local saves of profile deets
+        profileExtras = getIntent().getExtras();
+        if(profileExtras != null){
+            //set values
+            nameTV.setText(profileExtras.getString("username"));
+            emailTV.setText(profileExtras.getString("email"));
+            numberTV.setText(profileExtras.getString("number"));
+            genderTV.setText(profileExtras.getString("gender"));
+            ageTV.setText(profileExtras.getString("age"));
+        }
+
 
         //Setting Adapter
         OrgTransacAdapter orgAdapter = new OrgTransacAdapter(orgArrayList);
