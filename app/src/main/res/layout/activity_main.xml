@@ -5,7 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
+    <!--THIS ENTIRE PAGE IS FOR THE USER ACCOUNT-->
 
+    <ImageView
+        android:id="@+id/activity_main__logo_iv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ewas_logo_final"
+        app:layout_constraintBottom_toTopOf="@id/activity_main__qr_code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <TextView
+        android:id="@+id/activity_main__username_tv"
+        style="@style/TextAppearance.Material3.DisplayMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/main_activity__name_border"
+        android:text="Username Here"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_main__qr_code"
+        app:layout_constraintWidth_percent="0.88" />
+
+    <Button
+        android:id="@+id/activity_main__profile_btn"
+        style="@style/Widget.Material3.Button.TonalButton.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Edit Profile"
+        app:icon="@drawable/ic_baseline_account_circle_24"
+        app:iconGravity="textStart"
+        app:iconSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_main__username_tv"
+        app:layout_constraintWidth_percent="0.5" />
+
+
+    <ImageView
+        android:id="@+id/activity_main__qr_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/sample_qr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.75" />
 
     <ImageView
         android:id="@+id/iv_main_logo"

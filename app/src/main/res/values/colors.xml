@@ -1,4 +1,3 @@
-
 <resources>
     <color name="seed">#ad84fb</color>
     <color name="md_theme_light_primary">#6F46B9</color>
@@ -35,7 +34,7 @@
     <color name="md_theme_dark_onPrimary">#3F0688</color>
     <color name="md_theme_dark_primaryContainer">#562BA0</color>
     <color name="md_theme_dark_onPrimaryContainer">#EBDDFF</color>
-    <color name="md_theme_dark_secondary">#D3BBFF</color>
+    <color name="md_theme_dark_secondary">#78659C</color>
     <color name="md_theme_dark_onSecondary">#3C1D70</color>
     <color name="md_theme_dark_secondaryContainer">#533688</color>
     <color name="md_theme_dark_onSecondaryContainer">#EBDDFF</color>
@@ -62,8 +61,11 @@
     <color name="md_theme_dark_outlineVariant">#49454E</color>
     <color name="md_theme_dark_scrim">#000000</color>
 
-    //QR colors
+    <!--QR colors-->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--Activity Main colors -->
+    <color name="activity_main__username_border_color">#3ECDBAF3</color>
 
 </resources>
