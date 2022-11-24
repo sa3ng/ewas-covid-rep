@@ -84,11 +84,12 @@
 
                     <!--View For Username/Org name-->
                     <TextView
+                        android:id="@+id/tv_user_name"
                         style="@style/TextAppearance.Material3.HeadlineSmall"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:text="Username Here"
+                        android:text="Name Here"
                         android:textAlignment="center" />
 
                     <!--Internal layout for Email and Number-->
@@ -100,6 +101,7 @@
                         android:weightSum="3">
 
                         <TextView
+                            android:id="@+id/tv_email"
                             style="@style/TextAppearance.Material3.BodyMedium"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
@@ -113,6 +115,7 @@
                             android:background="@android:color/white" />
 
                         <TextView
+                            android:id="@+id/tv_contact_num"
                             style="@style/TextAppearance.Material3.BodyMedium"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
@@ -132,6 +135,7 @@
                         android:weightSum="3">
 
                         <TextView
+                            android:id="@+id/tv_age"
                             style="@style/TextAppearance.Material3.BodyMedium"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
@@ -145,6 +149,7 @@
                             android:background="@android:color/white" />
 
                         <TextView
+                            android:id="@+id/tv_gender"
                             style="@style/TextAppearance.Material3.BodyMedium"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"

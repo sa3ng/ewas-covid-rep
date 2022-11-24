@@ -15,7 +15,7 @@ import com.mp3.ewas_covid_app.R;
 public class Helper {
 
 //    @RequiresApi(api = Build.VERSION_CODES.M)
-    public static Bitmap generateQr(String s, Context context) {
+    public static Bitmap generateBitmap(String s, Context context) {
         BitMatrix result;
         Bitmap bitmap = null;
         try {

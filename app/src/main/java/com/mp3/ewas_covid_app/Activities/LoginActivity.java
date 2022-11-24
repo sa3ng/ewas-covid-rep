@@ -27,6 +27,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -76,21 +78,38 @@ public class LoginActivity extends AppCompatActivity {
                                         //start to new activity
                                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
+                                        //catch blocks for firebase exceptions and other possible exceptions
+//                                        if (!task.isSuccessful()) {
+//                                            try {
+//                                                throw task.getException();
+//                                            } catch (FirebaseAuthException e) {
+//                                                Toast.makeText(LoginActivity.this, getMessageFromErrorCode(e.getErrorCode()), Toast.LENGTH_SHORT).show();
+//                                                //  Log.e("Password weak?",e.getErrorCode());
+//                                            } catch (Exception e) {
+//
+//                                                //  Log.e("Error what Exception doe?", e.getMessage());
+//                                            }
+//                                        }
 
                                     } else {
-                                        //TODO
-                                        Toast.makeText(LoginActivity.this, "Unknown Credentials! Try Again!", Toast.LENGTH_SHORT).show();
+                                        try {
+                                            throw task.getException();
+                                        } catch (FirebaseAuthException e) {
+                                            Toast.makeText(LoginActivity.this, getMessageFromErrorCode(e.getErrorCode()), Toast.LENGTH_SHORT).show();
+                                            //  Log.e("Password weak?",e.getErrorCode());
+                                        } catch (Exception e) {
+
+                                            //  Log.e("Error what Exception doe?", e.getMessage());
+                                        }
                                     }
                                 }
                             }).addOnFailureListener(LoginActivity.this, new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    //TODO
-                                    Toast.makeText(LoginActivity.this, "Unknown Credentials! Try Again!", Toast.LENGTH_SHORT).show();
                                 }
                             });
-                }catch (NullPointerException e){
-                    Toast.makeText(LoginActivity.this, "Unknown Credentials! Try Again!", Toast.LENGTH_SHORT).show();
+                }catch (IllegalArgumentException e){
+                    Toast.makeText(LoginActivity.this, "Missing Fields! Input all info", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -140,6 +159,42 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public String getMessageFromErrorCode(String errorCode) {
+        switch (errorCode) {
+            case "ERROR_EMAIL_ALREADY_IN_USE":
+            case "account-exists-with-different-credential":
+            case "email-already-in-use":
+                return "Email already used. Go to login page.";
+
+            case "ERROR_WRONG_PASSWORD":
+            case "wrong-password":
+                return "Wrong email/password combination.";
+
+            case "ERROR_USER_NOT_FOUND":
+            case "user-not-found":
+                return "No user found with this email.";
+
+            case "ERROR_USER_DISABLED":
+            case "user-disabled":
+                return "User disabled.";
+
+            case "ERROR_TOO_MANY_REQUESTS":
+                return "Too many requests to log into this account.";
+
+            case "ERROR_OPERATION_NOT_ALLOWED":
+            case "operation-not-allowed":
+                return "Server error, please try again later.";
+
+            case "ERROR_INVALID_EMAIL":
+            case "invalid-email":
+                return "Email address is invalid.";
+
+            default:
+                return "Login failed. Please try again.";
+
+        }
     }
 
 }

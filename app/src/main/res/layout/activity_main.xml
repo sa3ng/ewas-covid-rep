@@ -61,55 +61,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.75" />
 
-    <ImageView
-        android:id="@+id/iv_main_logo"
-        android:layout_width="272dp"
-        android:layout_height="272dp"
-        android:src="@drawable/ewas_logo_final"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/cl_vaccine_check"
-
-        app:layout_constraintTop_toBottomOf="@id/iv_main_logo"
-        >
-
-
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="VACCINATED"
-        android:textSize="20dp"
-        style="@style/TextAppearance.Material3.HeadlineMedium"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-
-        android:text="Show QR"
-        android:background="@color/md_theme_dark_tertiary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent=".60"
-
-        />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
