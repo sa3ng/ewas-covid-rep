@@ -4,9 +4,7 @@
     <solid android:color="@color/md_theme_dark_secondaryContainer" />
     <corners
         android:radius="10dp"
-
         >
-
     </corners>
 
 </shape>

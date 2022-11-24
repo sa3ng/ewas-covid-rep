@@ -8,10 +8,10 @@
         <entry key="..\:/ewascovidapp/app/src/main/res/drawable/qr_temp.xml" value="0.108" />
         <entry key="..\:/ewascovidapp/app/src/main/res/drawable/radius.xml" value="0.1215" />
         <entry key="..\:/ewascovidapp/app/src/main/res/drawable/sample_qr_image_background.xml" value="0.1345" />
-        <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_covid_form.xml" value="0.264" />
+        <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_covid_form.xml" value="0.2" />
         <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_login.xml" value="0.152" />
         <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_org_scan_results.xml" value="0.12135416666666667" />
+        <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_org_scan_results.xml" value="0.2" />
         <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_org_scanned_user_history.xml" value="0.11041666666666666" />
         <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_profile.xml" value="0.2" />
         <entry key="..\:/ewascovidapp/app/src/main/res/layout/activity_signup.xml" value="0.176" />

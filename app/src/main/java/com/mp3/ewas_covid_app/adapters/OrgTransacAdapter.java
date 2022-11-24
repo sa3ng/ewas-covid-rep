@@ -40,8 +40,6 @@ public class OrgTransacAdapter extends RecyclerView.Adapter<OrgTransacAdapter.My
     @Override
     public void onBindViewHolder(@NonNull OrgTransacAdapter.MyViewHolder holder, int position) {
         String orgName = orgArrayList.get(position).getName();
-
-
         holder.nameTV.setText(orgName);
     }
 

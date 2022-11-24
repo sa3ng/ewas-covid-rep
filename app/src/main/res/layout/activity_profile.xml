@@ -31,7 +31,7 @@
                 android:id="@+id/profile_bg"
                 android:layout_width="match_parent"
                 android:layout_height="245dp"
-                android:background="@drawable/ic_launcher_background"
+                android:background="@color/md_theme_dark_inversePrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,11 +56,11 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="200dp"
 
-                app:layout_constraintWidth_percent=".90"
                 app:cardBackgroundColor="@color/cardview_dark_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".90">
 
                 <!--No Theming yet coz im a dumb bitch-->
 
@@ -159,52 +159,48 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_transac_histo"
+                style="@style/TextAppearance.Material3.LabelLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Transaction History"
-                style="@style/TextAppearance.Material3.LabelLarge"
+                android:layout_marginLeft="16dp"
 
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="16dp"
+                android:text="Transaction History"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_card_info"
-                />
+                app:layout_constraintTop_toBottomOf="@id/profile_card_info" />
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@color/cardview_dark_background"
-
-
                 android:layout_marginTop="5dp"
-                app:layout_constraintWidth_percent=".90"
+
+
+                android:background="@color/cardview_dark_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_transac_histo"
-                >
+                app:layout_constraintWidth_percent=".90">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                    android:background="@color/cardview_dark_background"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_user_transac"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
 
 
-                    app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="" Of="parent"
-                />
+                        android:background="@color/cardview_dark_background"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
     </ScrollView>
