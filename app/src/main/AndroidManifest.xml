@@ -13,13 +13,17 @@
         android:theme="@style/Theme.Ewascovidapp"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.OrgMain"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Activities.OrgSignupActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.EditProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.OrgScannedUserHistory"
             android:exported="false" />
         <activity
             android:name=".Activities.OrgScanResultsActivity"

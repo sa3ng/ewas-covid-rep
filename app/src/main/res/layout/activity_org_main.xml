@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.OrgMain">
+
+    <ImageView
+        android:id="@+id/org_main__logo_iv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ewas_logo_final"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.88" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/org_main__card_view"
+        style="?attr/materialCardViewElevatedStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardElevation="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/org_main__logo_iv"
+        app:layout_constraintWidth_percent="0.95">
+
+        <LinearLayout
+            android:id="@+id/org_main__card_view__ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/org_main__card_view__ll__company_name_tv"
+                style="@style/TextAppearance.Material3.DisplaySmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Company Name Here"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/org_main__card_view__ll__point_person_tv"
+                style="@style/TextAppearance.Material3.BodyLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Look for (Point person name) for more information"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/org_main__card_view__ll__address_intro_txt_tv"
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="Currently based in"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/org_main__card_view__ll__address_txt_tv_tv"
+                style="@style/TextAppearance.Material3.BodyLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Company Address Here"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/org_main__rv"
+        android:layout_width="0dp"
+        android:layout_height="255dp"
+        app:layout_constraintBottom_toTopOf="@id/org_main__bottomnav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/org_main__card_view"
+        app:layout_constraintWidth_percent="0.85">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/org_main__bottomnav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/org_main_bottomnav"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
