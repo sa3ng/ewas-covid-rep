@@ -39,14 +39,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Edit Profile"
+        android:text="Profile"
         app:icon="@drawable/ic_baseline_account_circle_24"
         app:iconGravity="textStart"
         app:iconSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activity_main__username_tv"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintWidth_percent="0.35" />
 
 
     <ImageView

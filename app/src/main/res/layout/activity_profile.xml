@@ -12,6 +12,7 @@
         android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_profile_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingBottom="50dp">
@@ -30,15 +31,15 @@
                 android:id="@+id/profile_bg"
                 android:layout_width="match_parent"
                 android:layout_height="245dp"
-                android:background="@drawable/ic_launcher_background"
+                android:background="@color/md_theme_dark_inversePrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <!--QR Code Location-->
             <ImageView
                 android:id="@+id/profile_qrcode_location"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_marginBottom="-30dp"
                 android:contentDescription="User QR Code"
                 android:elevation="1dp"
@@ -50,14 +51,16 @@
             <!--Card View For User/Org Information-->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/profile_card_info"
-                android:layout_width="350dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="200dp"
+
                 app:cardBackgroundColor="@color/cardview_dark_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".90">
 
                 <!--No Theming yet coz im a dumb bitch-->
 
@@ -65,6 +68,7 @@
                 <!--MarginTop must be adjusted in accordance with above IV marginBottom-->
                 <!--ex. 25dp must be added if bottom margin is 25 to whatever the desired margin-->
                 <LinearLayout
+                    android:id="@+id/ll_profile_details"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="30dp"
@@ -80,15 +84,16 @@
 
                     <!--View For Username/Org name-->
                     <TextView
+                        android:id="@+id/tv_user_name"
                         style="@style/TextAppearance.Material3.HeadlineSmall"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:text="Username Here"
+                        android:text="Name Here"
                         android:textAlignment="center" />
 
                     <!--Internal layout for Email and Number-->
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -96,27 +101,74 @@
                         android:weightSum="3">
 
                         <TextView
-                            style="@style/TextAppearance.Material3.BodyMedium"
-                            android:layout_width="75dp"
+                            android:id="@+id/tv_email"
+                            style="@style/TextAppearance.Material3.BodySmall"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Email Here"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
 
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="fill_parent"
-                            android:background="@android:color/white" />
+
+                            app:layout_constraintWidth_percent=".5"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/white_border"/>
 
                         <TextView
+                            android:id="@+id/tv_ageStr"
                             style="@style/TextAppearance.Material3.BodyMedium"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Number Here"
-                            android:textAlignment="center" />
+                            android:text="Age"
+                            android:textAlignment="center"
 
-                    </LinearLayout>
+                            app:layout_constraintTop_toBottomOf="@id/tv_email"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@id/white_border"/>
+
+                        <View
+                            android:id="@+id/white_border"
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:background="@android:color/white"
+
+                            app:layout_constraintHeight_percent="1"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/tv_email"
+                            app:layout_constraintEnd_toStartOf="@id/tv_contact_num"/>
+
+                        <TextView
+                            android:id="@+id/tv_contact_num"
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Number Here"
+                            android:textAlignment="center"
+
+                            app:layout_constraintWidth_percent=".5"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/white_border"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tv_gender"
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Gender"
+                            android:textAlignment="center"
+
+                            app:layout_constraintTop_toBottomOf="@id/tv_contact_num"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/white_border"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <!--Internal layout for Age and Gender-->
                     <LinearLayout
@@ -127,33 +179,56 @@
                         android:paddingBottom="12dp"
                         android:weightSum="3">
 
-                        <TextView
-                            style="@style/TextAppearance.Material3.BodyMedium"
-                            android:layout_width="75dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Age"
-                            android:textAlignment="center" />
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="fill_parent"
-                            android:background="@android:color/white" />
-
-                        <TextView
-                            style="@style/TextAppearance.Material3.BodyMedium"
-                            android:layout_width="75dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Gender"
-                            android:textAlignment="center" />
 
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_transac_histo"
+                style="@style/TextAppearance.Material3.LabelLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+
+                android:layout_marginTop="15dp"
+                android:text="Transaction History"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_card_info" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
+
+                android:background="@color/cardview_dark_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_transac_histo"
+                app:layout_constraintWidth_percent=".90">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_user_transac"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        app:fastScrollEnabled="false"
+                        android:background="@color/cardview_dark_background"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </ScrollView>
 
