@@ -24,6 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#262527"
         app:cardElevation="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +35,7 @@
             android:id="@+id/org_main__card_view__ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
@@ -68,6 +70,21 @@
                 android:layout_height="wrap_content"
                 android:text="Company Address Here"
                 android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/org_main__card_view__ll__scan_user_btn"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/md_theme_dark_background"
+                android:text="Scan a user "
+                android:textAlignment="center"
+                android:textColor="@color/md_theme_dark_onBackground"
+                app:icon="@drawable/ic_outline_person_outline_24"
+                app:iconSize="24dp"
+                app:iconTint="@color/md_theme_dark_onBackground" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -75,7 +92,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/org_main__rv"
         android:layout_width="0dp"
-        android:layout_height="255dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/org_main__bottomnav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,6 +106,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/org_main_bottomnav"/>
+        app:menu="@menu/org_main_bottomnav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

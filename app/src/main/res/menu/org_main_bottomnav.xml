@@ -3,16 +3,16 @@
     <item
         android:id="@+id/org_main__bottomnav__sort_day"
         android:enabled="true"
-        android:icon=""
+        android:icon="@drawable/ic_outline_calendar"
         android:title="Sort By Day" />
     <item
         android:id="@+id/org_main__bottomnav__sort_month"
         android:enabled="true"
-        android:icon=""
+        android:icon="@drawable/ic_outline_calendar"
         android:title="Sort By Month" />
     <item
         android:id="@+id/org_main__bottomnav__sort_year"
         android:enabled="true"
-        android:icon=""
+        android:icon="@drawable/ic_outline_calendar"
         android:title="Sort By Year" />
 </menu>
