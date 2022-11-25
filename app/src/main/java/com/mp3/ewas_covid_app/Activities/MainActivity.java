@@ -26,7 +26,6 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private TextView usernameTV;
     private ImageView userQR;
     private Button profileBTN;

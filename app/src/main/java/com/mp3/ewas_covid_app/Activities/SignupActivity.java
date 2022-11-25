@@ -148,6 +148,9 @@ public class SignupActivity extends AppCompatActivity {
         //For orgTransaction Array
         mRef.child(uid).child("orgTransactions").setValue(0);
 
+        //For AccountType Clarification
+        mRef.child(uid).child("accountType").setValue("user");
+
         finish();
     }
 }
