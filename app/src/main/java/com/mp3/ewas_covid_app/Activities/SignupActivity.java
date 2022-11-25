@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,7 +13,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
@@ -23,11 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.mp3.ewas_covid_app.Models.Transaction;
 import com.mp3.ewas_covid_app.Models.User;
 import com.mp3.ewas_covid_app.R;
-
-import java.util.ArrayList;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -50,13 +45,13 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         //instantiate
-        tilName = findViewById(R.id.til_name);
-        tilEmail = findViewById(R.id.til_email);
+        tilName = findViewById(R.id.til_name_org);
+        tilEmail = findViewById(R.id.til_email_org);
         tilNumber = findViewById(R.id.til_number);
         tilGender = findViewById(R.id.til_gender);
         tilAge = findViewById(R.id.til_age);
-        tilPassword = findViewById(R.id.til_password);
-        tilRepeatPassword = findViewById(R.id.til_repeat_password);
+        tilPassword = findViewById(R.id.til_password_org);
+        tilRepeatPassword = findViewById(R.id.til_repeat_password_org);
         btnSignup = findViewById(R.id.btn_signup);
 
         //FB
@@ -142,12 +137,12 @@ public class SignupActivity extends AppCompatActivity {
                 tilEmail.getEditText().getText().toString(),
                 tilNumber.getEditText().getText().toString(),
                 tilGender.getEditText().getText().toString(),
-                18,
+                Integer.parseInt(tilAge.getEditText().getText().toString()),
                 0);
 
         String uid = user.getUid();
 
-        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("ewas-users");
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("ewas-users/users");
         mRef.child(uid).setValue(um);
 
         //For orgTransaction Array

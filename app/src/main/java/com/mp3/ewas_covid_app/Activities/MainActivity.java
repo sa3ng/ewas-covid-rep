@@ -43,10 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        mRef = FirebaseDatabase.getInstance().getReference("ewas-users/" + mUser.getUid());
+        mRef = FirebaseDatabase.getInstance().getReference("ewas-users/users/" + mUser.getUid());
 
-        //Intent to use later for profile page
-        Intent profileIntent = new Intent(MainActivity.this, ProfileActivity.class);
 
         //initialize
         usernameTV = findViewById(R.id.activity_main__username_tv);
@@ -75,14 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Listeners
         profileBTN.setOnClickListener(v -> {
-            //Save data locally
-            profileIntent.putExtra("username", curUser.getName());
-            profileIntent.putExtra("email", curUser.getEmail());
-            profileIntent.putExtra("number", curUser.getNumber());
-            profileIntent.putExtra("gender", curUser.getGender());
-            profileIntent.putExtra("age", curUser.getAge().toString());
-
-            startActivity(profileIntent);
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         });
 
     }

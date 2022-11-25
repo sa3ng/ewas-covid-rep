@@ -28,17 +28,13 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.mp3.ewas_covid_app.R;
 
 public class LoginActivity extends AppCompatActivity {
     private Button signUpBTN;
+    private Button signUpOrgBTN;
     private Button signInBTN;
     private SignInButton btnGoogleAuth;
     private TextInputLayout tilEmail;
@@ -53,9 +49,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         signUpBTN = findViewById(R.id.btn_signup);
+        signUpOrgBTN = findViewById(R.id.btn_signup_org);
         signInBTN = findViewById(R.id.btn_signin);
-        tilEmail = findViewById(R.id.til_email);
-        tilPassword = findViewById(R.id.til_password);
+        tilEmail = findViewById(R.id.til_email_org);
+        tilPassword = findViewById(R.id.til_password_org);
         btnGoogleAuth = findViewById(R.id.btn_google_auth);
 
         mAuth = FirebaseAuth.getInstance();
@@ -64,6 +61,10 @@ public class LoginActivity extends AppCompatActivity {
         //OnClick Listeners
         signUpBTN.setOnClickListener(v -> {
             startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+        });
+
+        signUpOrgBTN.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, OrgSignupActivity.class));
         });
 
         signInBTN.setOnClickListener(new View.OnClickListener() {
