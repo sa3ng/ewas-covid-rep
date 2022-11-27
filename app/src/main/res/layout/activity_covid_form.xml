@@ -111,16 +111,193 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
                 android:text="Diarrhea" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/activity_covid_form__question_one_container__congestion_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:text="Congestion" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/activity_covid_form__question_one_container__loss_of_taste_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:text="Loss of Taste" />
+
         </LinearLayout>
 
         <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/activity_covid_form__after_question_one_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            app:dividerInsetEnd="32dp"
+            app:dividerInsetStart="16dp"
+            app:layout_constraintBottom_toTopOf="@id/activity_covid_form__question_two_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__question_one_container" />
+
+        <LinearLayout
+            android:id="@+id/activity_covid_form__question_two_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__after_question_one_container">
+
+            <TextView
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Have you a had a test for Covid - 19 within the past 10 days?"
+                android:textAlignment="center" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/activity_covid_form__question_two_container__had_test_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:text="Tap if True" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/activity_covid_form__after_question_two_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:dividerInsetEnd="32dp"
             app:dividerInsetStart="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__question_one_container" />
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__question_two_container" />
+
+        <LinearLayout
+            android:id="@+id/activity_covid_form__question_three_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__after_question_two_container">
+
+            <TextView
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Are you currently awaiting results from a COVID-19 test?"
+                android:textAlignment="center" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/activity_covid_form__question_three_container__with_positive_person_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:text="Tap if True" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/activity_covid_form__after_question_three_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerInsetEnd="32dp"
+            app:dividerInsetStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__question_three_container" />
+
+        <LinearLayout
+            android:id="@+id/activity_covid_form__question_four_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__after_question_three_container">
+
+            <TextView
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Have you been diagnosed with COVID-19 by a licensed healthcare
+                                provider (for example, a doctor, nurse, pharmacist, or other) in the
+                                past 10 days??"
+                android:textAlignment="center" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/activity_covid_form__question_four_container__with_advised_quarantine_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:text="Tap if True" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/activity_covid_form__after_question_four_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerInsetEnd="32dp"
+            app:dividerInsetStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__question_four_container" />
+
+        <LinearLayout
+            android:id="@+id/activity_covid_form__question_five_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__after_question_four_container">
+
+            <TextView
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Have you been told that you are suspected to have COVID-19 by a
+                              licensed healthcare provider in the past 10 days"
+                android:textAlignment="center" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/activity_covid_form__question_five_container__suspected_covid_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:text="Tap if True" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/activity_covid_form__after_question_five_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerInsetEnd="32dp"
+            app:dividerInsetStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__question_five_container" />
+
+        <Button
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/md_theme_dark_surfaceVariant"
+            android:text="Submit Survey"
+            android:textColor="@color/white"
+            app:icon="@drawable/ic_round_checklist_24"
+            app:iconGravity="textStart"
+            app:iconTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__after_question_five_container"
+            app:layout_constraintWidth_percent="0.4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
