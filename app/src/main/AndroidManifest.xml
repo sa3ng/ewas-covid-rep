@@ -19,7 +19,7 @@
             android:name=".Activities.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.OrgScannedUserHistory"
+            android:name=".Activities.OrgMain"
             android:exported="false" />
         <activity
             android:name=".Activities.OrgScanResultsActivity"
