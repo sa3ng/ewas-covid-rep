@@ -35,6 +35,7 @@
                 android:id="@+id/cq1_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/md_theme_dark_tertiaryContainer"
 
                 android:text="@string/covid_question_1"
                 android:textAlignment="center"
@@ -322,7 +323,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:text="Sign up"
+            android:text="Submit"
             android:layout_marginBottom="20dp"
             style="@style/Widget.Material3.Button"
             app:layout_constraintEnd_toEndOf="parent"
