@@ -9,7 +9,7 @@ public class User {
     private String gender;
     private Integer age;
     private Integer formPoints;
-    private ArrayList<Transaction> orgTransactionHistory;
+    private ArrayList<OrgTransaction> orgTransactionHistory;
 
     public User(){}
 
@@ -23,19 +23,19 @@ public class User {
 
     }
 
-    public ArrayList<Transaction> getOrgTransactionHistory() {
+    public ArrayList<OrgTransaction> getOrgTransactionHistory() {
         return orgTransactionHistory;
     }
 
-    public void setOrgTransactionHistory(ArrayList<Transaction> orgTransactionHistory) {
+    public void setOrgTransactionHistory(ArrayList<OrgTransaction> orgTransactionHistory) {
         this.orgTransactionHistory = orgTransactionHistory;
     }
 
-    public int getFormPoints() {
+    public Integer getFormPoints() {
         return formPoints;
     }
 
-    public void setFormPoints(int formPoints) {
+    public void setFormPoints(Integer formPoints) {
         this.formPoints = formPoints;
     }
 

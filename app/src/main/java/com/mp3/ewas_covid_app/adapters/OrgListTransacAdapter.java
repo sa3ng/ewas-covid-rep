@@ -8,14 +8,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mp3.ewas_covid_app.Models.OrgTransaction;
 import com.mp3.ewas_covid_app.Models.Transaction;
 import com.mp3.ewas_covid_app.R;
 
 import java.util.ArrayList;
 
-public class OrgTransacAdapter extends RecyclerView.Adapter<OrgTransacAdapter.MyViewHolder> {
+public class OrgListTransacAdapter extends RecyclerView.Adapter<OrgListTransacAdapter.MyViewHolder> {
     private ArrayList<Transaction> orgArrayList;
-    public OrgTransacAdapter(ArrayList<Transaction> orgArrayList){
+    public OrgListTransacAdapter(ArrayList<Transaction> orgArrayList){
         this.orgArrayList = orgArrayList;
     }
 
@@ -32,13 +33,13 @@ public class OrgTransacAdapter extends RecyclerView.Adapter<OrgTransacAdapter.My
 
     @NonNull
     @Override
-    public OrgTransacAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public OrgListTransacAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_transac_items,parent,false);
         return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OrgTransacAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OrgListTransacAdapter.MyViewHolder holder, int position) {
         String orgName = orgArrayList.get(position).getName();
         holder.nameTV.setText(orgName);
     }

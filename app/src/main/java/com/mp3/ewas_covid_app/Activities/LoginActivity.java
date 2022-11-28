@@ -28,9 +28,17 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.mp3.ewas_covid_app.Models.User;
 import com.mp3.ewas_covid_app.R;
+
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
     private Button signUpBTN;
@@ -40,8 +48,12 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout tilEmail;
     private TextInputLayout tilPassword;
 
+    private FirebaseUser mUser;
     private FirebaseAuth mAuth;
     private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference mRef;
+    String path = "ewas-users/users/";
+
 
 
     @Override
@@ -54,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         tilEmail = findViewById(R.id.til_email_org);
         tilPassword = findViewById(R.id.til_password_org);
         btnGoogleAuth = findViewById(R.id.btn_google_auth);
+
 
         mAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -76,9 +89,8 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        //start to new activity
-                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                        finish();
+                                        //If not, Account type is ORGANIZATION
+                                        checkUserExists();
 
                                     } else {
                                         try {
@@ -138,6 +150,8 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithCredential(authCredential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+
+                checkUserExists();
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
             }
@@ -183,6 +197,35 @@ public class LoginActivity extends AppCompatActivity {
                 return "Login failed. Please try again.";
 
         }
+    }
+
+    public void checkUserExists(){
+        //Check if user exists - to know usertype
+        mUser = mAuth.getCurrentUser();
+        path = "ewas-users/users/" + mUser.getUid();
+        mRef = FirebaseDatabase.getInstance().getReference(path);
+
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try {
+                    User um = snapshot.getValue(User.class);
+                    String test = um.getName();
+
+                    //start to new activity - USER type
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                } catch(NullPointerException e){
+                    //Means that account logged in is not USER but a ORGANIZATION ACCOUNT
+                    startActivity(new Intent(LoginActivity.this, OrgMain.class));
+                    finish();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 }

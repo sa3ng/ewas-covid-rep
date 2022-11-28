@@ -47,25 +47,26 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/org_main__card_view__ll__point_person_tv"
-                style="@style/TextAppearance.Material3.BodyLarge"
+                android:id="@+id/org_main__card_view__ll__email_tv"
+                style="@style/TextAppearance.Material3.TitleMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Look for (Point person name) for more information"
+                android:text="Contact (E-mail) for more information"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/org_main__card_view__ll__address_intro_txt_tv"
-                style="@style/TextAppearance.Material3.TitleLarge"
+                style="@style/TextAppearance.Material3.LabelLarge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9dp"
-                android:text="Currently based in"
-                android:textAlignment="center" />
+                android:text="Currently based in:"
+                android:textAlignment="center"
+                android:textColor="@color/md_theme_dark_secondary"/>
 
             <TextView
                 android:id="@+id/org_main__card_view__ll__address_txt_tv_tv"
-                style="@style/TextAppearance.Material3.BodyLarge"
+                style="@style/TextAppearance.Material3.TitleLarge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Company Address Here"
@@ -92,12 +93,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/org_main__rv"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+
+        android:background="@color/cardview_dark_background"
         app:layout_constraintBottom_toTopOf="@id/org_main__bottomnav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/org_main__card_view"
-        app:layout_constraintWidth_percent="0.85">
+        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintHeight_percent=".30">
 
     </androidx.recyclerview.widget.RecyclerView>
 

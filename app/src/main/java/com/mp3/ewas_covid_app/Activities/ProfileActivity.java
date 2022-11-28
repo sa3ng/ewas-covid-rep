@@ -1,15 +1,14 @@
 package com.mp3.ewas_covid_app.Activities;
 
 import static com.mp3.ewas_covid_app.helper.Helper.generateBitmap;
+import static com.mp3.ewas_covid_app.helper.Helper.setSampleUserInfo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,13 +20,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mp3.ewas_covid_app.Models.OrgTransaction;
 import com.mp3.ewas_covid_app.Models.Transaction;
 import com.mp3.ewas_covid_app.Models.User;
 import com.mp3.ewas_covid_app.R;
-import com.mp3.ewas_covid_app.adapters.OrgTransacAdapter;
+import com.mp3.ewas_covid_app.adapters.OrgListTransacAdapter;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -70,8 +69,14 @@ public class ProfileActivity extends AppCompatActivity {
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User um = snapshot.getValue(User.class);
-                curUser = um;
+                curUser = snapshot.getValue(User.class);
+
+                //Set Profile deets
+                nameTV.setText(curUser.getName());
+                emailTV.setText(curUser.getEmail());
+                numberTV.setText(curUser.getNumber());
+                genderTV.setText(curUser.getGender());
+                ageTV.setText(curUser.getAge().toString());
             }
 
             @Override
@@ -79,19 +84,14 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        //Set Profile deets
-        nameTV.setText(curUser.getName());
-        emailTV.setText(curUser.getEmail());
-        numberTV.setText(curUser.getNumber());
-        genderTV.setText(curUser.getGender());
-        ageTV.setText(curUser.getAge().toString());
+
 
         //Set image
         qrIV.setImageBitmap(generateBitmap(mUser.getUid(), getBaseContext()));
 
 
         //Setting Adapter
-        OrgTransacAdapter orgAdapter = new OrgTransacAdapter(orgArrayList);
+        OrgListTransacAdapter orgAdapter = new OrgListTransacAdapter(orgArrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         userTransac_rv.setLayoutManager(layoutManager);
         userTransac_rv.setItemAnimator(new DefaultItemAnimator());
@@ -99,17 +99,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         //Sample Array data
-        setUserInfo();
+        setSampleUserInfo(orgArrayList);
     }
 
-    private void setUserInfo() {
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-
-    }
 }
