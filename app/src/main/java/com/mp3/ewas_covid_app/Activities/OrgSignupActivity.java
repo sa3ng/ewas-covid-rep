@@ -45,7 +45,7 @@ public class OrgSignupActivity extends AppCompatActivity {
         tilNameOrg = findViewById(R.id.til_name_org);
         tilEmailOrg = findViewById(R.id.til_email_org);
         tilAddressOrg = findViewById(R.id.til_address_org);
-        signupOrgBTN = findViewById(R.id.btn_signup_org);
+        signupOrgBTN = findViewById(R.id.btn_signup_act_org);
         tilPasswordOrg = findViewById(R.id.til_password_org);
         tilRepeatPasswordOrg = findViewById(R.id.til_repeat_password_org);
 
@@ -115,7 +115,7 @@ public class OrgSignupActivity extends AppCompatActivity {
         mRef.child(uid).child("userTransactions").setValue(0);
 
         //For AccountType Clarification
-        mRef.child(uid).child("accountType").setValue("user");
+        mRef.child(uid).child("accountType").setValue("org");
 
         finish();
     }

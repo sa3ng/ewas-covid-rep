@@ -10,7 +10,10 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.mp3.ewas_covid_app.Models.Transaction;
 import com.mp3.ewas_covid_app.R;
+
+import java.util.ArrayList;
 
 public class Helper {
 
@@ -53,6 +56,17 @@ public class Helper {
     public static double addCreds(Double oldCredit, Double toAdd){
         Double result = oldCredit + toAdd;
         return  result;
+    }
+
+    public static void setSampleUserInfo(ArrayList<Transaction> orgArrayList) {
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
+
     }
 
 }

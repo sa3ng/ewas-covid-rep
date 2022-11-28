@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView usernameTV;
     private ImageView userQR;
     private Button profileBTN;
-    private User curUser;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -59,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User um = snapshot.getValue(User.class);
-                curUser = um;
                 usernameTV.setText(um.getName().toUpperCase(Locale.ROOT));
             }
 

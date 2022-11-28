@@ -1,14 +1,14 @@
 package com.mp3.ewas_covid_app.Models;
 
-public class Transaction {
+public class OrgTransaction {
     String name;
     String date;
     String time;
-    String orgUID;
+    String userUID;
 
-    public Transaction(){}
+    public OrgTransaction(){}
 
-    public Transaction(String name, String date, String time){
+    public OrgTransaction(String name, String date, String time){
         this.name = name;
         this.date = date;
         this.time = time;
