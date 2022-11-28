@@ -4,16 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mp3.ewas_covid_app.Models.User;
 import com.mp3.ewas_covid_app.R;
 
 public class EditProfileActivity extends AppCompatActivity {
@@ -44,10 +47,17 @@ public class EditProfileActivity extends AppCompatActivity {
         EditText etAge = tilAge.getEditText();
 
         //to get email text to display in edit profile
-        mRef.child("email").addValueEventListener(new ValueEventListener() {
+        final User[] fetchedUser = new User[1];
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                etEmail.setText(String.valueOf(snapshot.getValue()));
+                User user = snapshot.getValue(User.class);
+                etEmail.setText(user.getEmail());
+                etName.setText(user.getName());
+                etNumber.setText(user.getNumber());
+                etGender.setText(user.getGender());
+                etAge.setText(user.getAge().toString());
+                fetchedUser[0] = user;
             }
 
             @Override
@@ -59,33 +69,30 @@ public class EditProfileActivity extends AppCompatActivity {
 
         Button btnEdit = findViewById(R.id.activity_edit_profile__btn_edit);
         btnEdit.setOnClickListener(view -> {
-            /*
-            write objects manually to allow for singular changes,
-            without a collective input requirement
-            */
-            if (etName.getText().length() != 0) {
-                mRef.child("name").setValue(etName.getText().toString());
+            if ((etEmail.length() <= 0) ||
+                    (etName.length() <= 0) ||
+                    (etNumber.length() <= 0) ||
+                    (etGender.length() <= 0) ||
+                    (etAge.length() <= 0)) {
+                Toast.makeText(this, "All fields must not be empty", Toast.LENGTH_SHORT).show();
+            } else if (etNumber.length() < 11)
+                Toast.makeText(this, "Number field must have 11 digits", Toast.LENGTH_SHORT).show();
+            else {
+                User toSubmit = fetchedUser[0];
+                toSubmit.setAge(Integer.valueOf(etAge.getText().toString()));
+                toSubmit.setNumber(etNumber.getText().toString());
+                toSubmit.setEmail(etEmail.getText().toString());
+                toSubmit.setGender(etGender.getText().toString());
+                toSubmit.setName(etName.getText().toString());
+
+                mRef.setValue(toSubmit).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+
+                    }
+                });
             }
 
-            if (etNumber.getText().length() != 0) {
-                if (etNumber.getText().length() < 11)
-                    etNumber.setError("Number must be 11 characters in length");
-                else
-                    mRef.child("number").setValue(etNumber.getText().toString());
-            }
-
-            if (etGender.getText().length() != 0) {
-                mRef.child("gender").setValue(etGender.getText().toString());
-
-            }
-
-            if (etAge.getText().length() != 0) {
-                mRef.child("age").setValue(Integer.valueOf(etAge.getText().toString()));
-
-            }
-
-            /* return to previous activity (which should be activity_edit_profile) */
-            finishActivity(0);
         });
     }
 }
