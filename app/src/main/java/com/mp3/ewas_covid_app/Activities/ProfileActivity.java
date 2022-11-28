@@ -3,7 +3,9 @@ package com.mp3.ewas_covid_app.Activities;
 import static com.mp3.ewas_covid_app.helper.Helper.generateBitmap;
 import static com.mp3.ewas_covid_app.helper.Helper.setSampleUserInfo;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,6 +39,8 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView qrIV;
     private User curUser;
 
+    private Button editProfileBTN;
+
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private DatabaseReference mRef;
@@ -63,6 +67,8 @@ public class ProfileActivity extends AppCompatActivity {
         qrIV = findViewById(R.id.profile_qrcode_location);
         orgArrayList = new ArrayList<>();
         userTransac_rv = findViewById(R.id.rv_user_transac);
+        editProfileBTN = findViewById(R.id.activity_profile__edit_profile_btn);
+
 
         //FB
         mAuth = FirebaseAuth.getInstance();
@@ -88,6 +94,16 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        //EditProfile btn Functionality
+        editProfileBTN.setOnClickListener(view -> {
+            Intent i = new Intent(
+                    ProfileActivity.this,
+                    EditProfileActivity.class
+            );
+            i.putExtra("userUID", mUser.getUid());
+            i.putExtra("firebasePath", "ewas-users/users/");
+            ProfileActivity.this.startActivity(i);
+        });
 
         //Set image
         qrIV.setImageBitmap(generateBitmap(mUser.getUid(), getBaseContext()));
