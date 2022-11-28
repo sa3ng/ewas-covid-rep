@@ -59,13 +59,13 @@ public class Helper {
     }
 
     public static void setSampleUserInfo(ArrayList<Transaction> orgArrayList) {
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
-        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am", "sampleUID"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am", "sampleUID"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am", "sampleUID"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am", "sampleUID"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am", "sampleUID"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am", "sampleUID"));
+        orgArrayList.add(new Transaction("Edgar", "January 6, 2022", "2:00 am", "sampleUID"));
 
     }
 

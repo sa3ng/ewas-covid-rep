@@ -45,10 +45,12 @@ public class OrgMain extends AppCompatActivity {
 
     private Organization curOrg;
     private ArrayList<Transaction> userArrayList;
+    private ArrayList<String> transacUidArrayList;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private DatabaseReference mRef;
+    private DatabaseReference transacRef;
 
 
     @Override
@@ -56,6 +58,7 @@ public class OrgMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_org_main);
 
+        //Instatiate
         userArrayList = new ArrayList<>();
         userListRV = findViewById(R.id.org_main__rv);
         compNameTV = findViewById(R.id.org_main__card_view__ll__company_name_tv);
@@ -63,11 +66,14 @@ public class OrgMain extends AppCompatActivity {
         compAddressTV = findViewById(R.id.org_main__card_view__ll__address_txt_tv_tv);
         scanBTN = findViewById(R.id.org_main__card_view__ll__scan_user_btn);
 
+        //FB
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mRef = FirebaseDatabase.getInstance().getReference("ewas-users/organizations/" + mUser.getUid());
+        transacRef = FirebaseDatabase.getInstance().getReference("ewas-users/organizations/" + mUser.getUid() + "/userTransactions");
 
-        //get from FB and set values
+
+        //get ORG PROFILE from FB
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -79,6 +85,28 @@ public class OrgMain extends AppCompatActivity {
                 compEmailTV.setText(curOrg.getEmail());
                 compAddressTV.setText(curOrg.getAddress().toUpperCase(Locale.ROOT));
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        //GET TRANSACTION items from FB
+
+        transacRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot users : snapshot.getChildren()){
+                    userArrayList.add(users.getValue(Transaction.class));
+                }
+
+                //Setting Adapter
+                UserListTransacAdapter userAdapter = new UserListTransacAdapter(userArrayList);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                userListRV.setLayoutManager(layoutManager);
+                userListRV.setItemAnimator(new DefaultItemAnimator());
+                userListRV.setAdapter(userAdapter);
+
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -86,13 +114,7 @@ public class OrgMain extends AppCompatActivity {
             }
         });
 
-        //Setting Adapter
-        UserListTransacAdapter userAdapter = new UserListTransacAdapter(userArrayList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        userListRV.setLayoutManager(layoutManager);
-        userListRV.setItemAnimator(new DefaultItemAnimator());
-        userListRV.setAdapter(userAdapter);
-        setSampleUserInfo(userArrayList);
+
 
         //listeners
         IntentIntegrator qrScan = new IntentIntegrator(this);

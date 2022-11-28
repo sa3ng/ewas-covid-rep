@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 public class UserListTransacAdapter extends RecyclerView.Adapter<UserListTransacAdapter.MyViewHolder> {
     private ArrayList<Transaction> userArrayList;
+
+
     public UserListTransacAdapter(ArrayList<Transaction> userArrayList){
         this.userArrayList = userArrayList;
     }
@@ -22,6 +24,8 @@ public class UserListTransacAdapter extends RecyclerView.Adapter<UserListTransac
     public class MyViewHolder extends RecyclerView.ViewHolder{
         //declare TV's from item.xml to be put used in RV
         private TextView nameTV;
+        private TextView dateTV;
+        private TextView timeTV;
 
 
         public MyViewHolder(final View view){
