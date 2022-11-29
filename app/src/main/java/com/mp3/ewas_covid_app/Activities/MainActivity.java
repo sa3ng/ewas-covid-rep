@@ -83,21 +83,27 @@ public class MainActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar calendar = Calendar.getInstance();
 
-                if (!snapshot.exists()) {
+                try{
+                    // if date is equal to an empty string or date does not match
+                    if ((snapshot.getValue()).toString().equals("")
+                            || !(snapshot.getValue().toString().equals(sdf.format(calendar.getTime())))
+                    ) {
+                        Intent i = new Intent(MainActivity.this, CovidFormActivity.class);
+                        i.putExtra("userPath", "ewas-users/users/" + mUser.getUid());
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(i);
+                        finish();
+                    }
+                }catch (NullPointerException e){
                     mRefUserFormAnswerDate.setValue("");
-                }
 
-                // if date is equal to an empty string or date does not match
-                if ((snapshot.getValue()).toString().equals("")
-                        || !(snapshot.getValue().toString().equals(sdf.format(calendar.getTime())))
-                ) {
                     Intent i = new Intent(MainActivity.this, CovidFormActivity.class);
                     i.putExtra("userPath", "ewas-users/users/" + mUser.getUid());
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(i);
                     finish();
 
                 }
-
 
             }
 

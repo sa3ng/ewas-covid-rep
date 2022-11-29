@@ -119,6 +119,9 @@ public class CovidFormActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(Void unused) {
                     Toast.makeText(CovidFormActivity.this, "Form has been submitted!", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(CovidFormActivity.this, MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i);
                     finish();
                 }
             });
