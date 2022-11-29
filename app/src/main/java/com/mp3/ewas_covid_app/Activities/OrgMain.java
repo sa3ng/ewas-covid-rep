@@ -53,6 +53,7 @@ public class OrgMain extends AppCompatActivity {
     private DatabaseReference transacRef;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,12 +96,13 @@ public class OrgMain extends AppCompatActivity {
         transacRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userArrayList.clear();
                 for(DataSnapshot users : snapshot.getChildren()){
                     userArrayList.add(users.getValue(Transaction.class));
                 }
 
                 //Setting Adapter
-                UserListTransacAdapter userAdapter = new UserListTransacAdapter(userArrayList);
+                UserListTransacAdapter userAdapter = new UserListTransacAdapter(userArrayList, getBaseContext());
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                 userListRV.setLayoutManager(layoutManager);
                 userListRV.setItemAnimator(new DefaultItemAnimator());
@@ -129,6 +131,8 @@ public class OrgMain extends AppCompatActivity {
         });
 
     }
+
+
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
