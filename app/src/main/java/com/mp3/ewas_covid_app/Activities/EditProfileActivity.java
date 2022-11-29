@@ -110,7 +110,10 @@ public class EditProfileActivity extends AppCompatActivity {
                 mRef.setValue(toSubmit).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-
+                        Intent toMain = new Intent(EditProfileActivity.this, MainActivity.class);
+                        toMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(toMain);
+                        finish();
                     }
                 });
 
