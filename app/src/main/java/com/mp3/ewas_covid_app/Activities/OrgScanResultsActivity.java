@@ -111,6 +111,10 @@ public class OrgScanResultsActivity extends AppCompatActivity {
             createTransacInstance(selectedUserUID, mUser.getUid(), now);
         });
 
+        rejectBTN.setOnClickListener(v -> {
+            finish();
+        });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
