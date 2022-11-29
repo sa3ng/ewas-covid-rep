@@ -29,7 +29,7 @@ public class User {
         return orgTransactions;
     }
 
-    public void setOrgTransactionHistory(ArrayList<Transaction> orgTransactions) {
+    public void setOrgTransactions(ArrayList<Transaction> orgTransactions) {
         this.orgTransactions = orgTransactions;
     }
 

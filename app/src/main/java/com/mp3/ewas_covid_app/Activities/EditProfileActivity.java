@@ -106,7 +106,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 toSubmit.setEmail(etEmail.getText().toString());
                 toSubmit.setGender(etGender.getText().toString());
                 toSubmit.setName(etName.getText().toString());
-                toSubmit.setOrgTransactionHistory(fetchedData);
+                toSubmit.setOrgTransactions(fetchedData);
 
                 mRef.setValue(toSubmit).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
