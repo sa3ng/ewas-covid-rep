@@ -7,7 +7,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.materialswitch.MaterialSwitch;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mp3.ewas_covid_app.R;
 
 import java.text.SimpleDateFormat;
@@ -19,6 +22,11 @@ public class CovidFormActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_covid_form);
+
+        Intent receivedIntent = getIntent();
+        String userPath = receivedIntent.getStringExtra("userPath");
+
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference(userPath);
 
         //first question container
         MaterialSwitch mwFever =
@@ -106,9 +114,14 @@ public class CovidFormActivity extends AppCompatActivity {
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             Calendar calendar = Calendar.getInstance();
-            Toast.makeText(this, "Date is " + sdf.format(calendar.getTime()) + "\n" + finalScore, Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(CovidFormActivity.this, MainActivity.class));
-            finish();
+            mRef.child("formLastAnswered").setValue(sdf.format(calendar.getTime()));
+            mRef.child("formPoints").setValue(finalScore).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(CovidFormActivity.this, "Form has been submitted!", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            });
         });
 
     }

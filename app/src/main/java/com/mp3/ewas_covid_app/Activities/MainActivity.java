@@ -22,6 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.mp3.ewas_covid_app.Models.User;
 import com.mp3.ewas_covid_app.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -78,15 +80,22 @@ public class MainActivity extends AppCompatActivity {
         mRefUserFormAnswerDate.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Calendar calendar = Calendar.getInstance();
+
                 if (!snapshot.exists()) {
                     mRefUserFormAnswerDate.setValue("");
                 }
 
-                if ((snapshot.getValue()).toString().equals("")) {
+                // if date is equal to an empty string or date does not match
+                if ((snapshot.getValue()).toString().equals("")
+                        || !(snapshot.getValue().toString().equals(sdf.format(calendar.getTime())))
+                ) {
                     Intent i = new Intent(MainActivity.this, CovidFormActivity.class);
                     i.putExtra("userPath", "ewas-users/users/" + mUser.getUid());
                     startActivity(i);
                     finish();
+
                 }
 
 
