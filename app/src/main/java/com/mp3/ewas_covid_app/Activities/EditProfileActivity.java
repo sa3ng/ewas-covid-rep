@@ -16,8 +16,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mp3.ewas_covid_app.Models.Transaction;
 import com.mp3.ewas_covid_app.Models.User;
 import com.mp3.ewas_covid_app.R;
+
+import java.util.ArrayList;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -29,6 +32,10 @@ public class EditProfileActivity extends AppCompatActivity {
         Intent receivedIntent = getIntent();
         String userUID = receivedIntent.getStringExtra("userUID");
         String firebasePath = receivedIntent.getStringExtra("firebasePath");
+        ArrayList<Transaction> orgArrayListToCopy =
+                (ArrayList<Transaction>) receivedIntent
+                        .getSerializableExtra("orgArrayListToCopy");
+
 
         DatabaseReference mRef = FirebaseDatabase
                 .getInstance()
@@ -84,6 +91,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 toSubmit.setEmail(etEmail.getText().toString());
                 toSubmit.setGender(etGender.getText().toString());
                 toSubmit.setName(etName.getText().toString());
+                toSubmit.setOrgTransactionHistory(orgArrayListToCopy);
 
                 mRef.setValue(toSubmit).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

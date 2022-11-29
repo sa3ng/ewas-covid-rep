@@ -1,11 +1,9 @@
 package com.mp3.ewas_covid_app.Activities;
 
 import static com.mp3.ewas_covid_app.helper.Helper.generateBitmap;
-import static com.mp3.ewas_covid_app.helper.Helper.setSampleUserInfo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,7 +26,6 @@ import com.mp3.ewas_covid_app.Models.Transaction;
 import com.mp3.ewas_covid_app.Models.User;
 import com.mp3.ewas_covid_app.R;
 import com.mp3.ewas_covid_app.adapters.OrgListTransacAdapter;
-import com.mp3.ewas_covid_app.adapters.UserListTransacAdapter;
 
 import java.util.ArrayList;
 
@@ -90,13 +87,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         //fetch extras from last intent
         Bundle selectedUserBundle = getIntent().getExtras();
-        if(selectedUserBundle != null){
+        if (selectedUserBundle != null) {
             selectedUserUID = selectedUserBundle.getString("userSelectedUID");
             isViewing = selectedUserBundle.getBoolean("isViewing");
         }
 
         //Set accordingly if VIEWING or not
-        if(isViewing){
+        if (isViewing) {
             mRef = FirebaseDatabase.getInstance().getReference("ewas-users/users/" + selectedUserUID);
 
             //Fetch deets from FB
@@ -124,8 +121,7 @@ public class ProfileActivity extends AppCompatActivity {
             userTransac_rv.setVisibility(View.GONE);
             rvLabelTV.setVisibility(View.GONE);
 
-        }
-        else{
+        } else {
             mRef = FirebaseDatabase.getInstance().getReference("ewas-users/users/" + mUser.getUid());
             transacRef = FirebaseDatabase.getInstance().getReference("ewas-users/users/" + mUser.getUid() + "/orgTransactions");
 
@@ -155,7 +151,7 @@ public class ProfileActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     orgArrayList.clear();
-                    for(DataSnapshot users : snapshot.getChildren()){
+                    for (DataSnapshot users : snapshot.getChildren()) {
                         orgArrayList.add(users.getValue(Transaction.class));
                     }
 
@@ -177,7 +173,6 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
 
-
         //EditProfile btn Functionality
         editProfileBTN.setOnClickListener(view -> {
             Intent i = new Intent(
@@ -186,6 +181,7 @@ public class ProfileActivity extends AppCompatActivity {
             );
             i.putExtra("userUID", mUser.getUid());
             i.putExtra("firebasePath", "ewas-users/users/");
+            i.putExtra("orgArrayListToCopy", orgArrayList);
             ProfileActivity.this.startActivity(i);
         });
         //Set image
@@ -194,7 +190,7 @@ public class ProfileActivity extends AppCompatActivity {
         logoutBTN.setOnClickListener(v -> {
             mAuth.signOut();
             Intent signOutIntent = new Intent(ProfileActivity.this, LoginActivity.class);
-            signOutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            signOutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(signOutIntent);
             finish();
         });
