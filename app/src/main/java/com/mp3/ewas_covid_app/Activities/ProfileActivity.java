@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mp3.ewas_covid_app.Models.ArrayListTransactionWrapper;
 import com.mp3.ewas_covid_app.Models.Transaction;
 import com.mp3.ewas_covid_app.Models.User;
 import com.mp3.ewas_covid_app.R;
@@ -181,7 +182,6 @@ public class ProfileActivity extends AppCompatActivity {
             );
             i.putExtra("userUID", mUser.getUid());
             i.putExtra("firebasePath", "ewas-users/users/");
-            i.putExtra("orgArrayListToCopy", orgArrayList);
             ProfileActivity.this.startActivity(i);
         });
         //Set image

@@ -10,15 +10,6 @@ public class User {
     private Integer age;
     private Integer formPoints;
     private String formLastAnswered;
-
-    public String getFormLastAnswered() {
-        return formLastAnswered;
-    }
-
-    public void setFormLastAnswered(String formLastAnswered) {
-        this.formLastAnswered = formLastAnswered;
-    }
-
     private ArrayList<Transaction> orgTransactionHistory;
 
     public User() {
@@ -88,5 +79,13 @@ public class User {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getFormLastAnswered() {
+        return formLastAnswered;
+    }
+
+    public void setFormLastAnswered(String formLastAnswered) {
+        this.formLastAnswered = formLastAnswered;
     }
 }

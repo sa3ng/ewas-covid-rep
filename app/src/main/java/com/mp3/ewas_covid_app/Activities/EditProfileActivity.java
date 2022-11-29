@@ -32,9 +32,6 @@ public class EditProfileActivity extends AppCompatActivity {
         Intent receivedIntent = getIntent();
         String userUID = receivedIntent.getStringExtra("userUID");
         String firebasePath = receivedIntent.getStringExtra("firebasePath");
-        ArrayList<Transaction> orgArrayListToCopy =
-                (ArrayList<Transaction>) receivedIntent
-                        .getSerializableExtra("orgArrayListToCopy");
 
 
         DatabaseReference mRef = FirebaseDatabase
@@ -59,12 +56,30 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
+
                 etEmail.setText(user.getEmail());
                 etName.setText(user.getName());
                 etNumber.setText(user.getNumber());
                 etGender.setText(user.getGender());
                 etAge.setText(user.getAge().toString());
                 fetchedUser[0] = user;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        ArrayList<Transaction> fetchedData = new ArrayList<>();
+        //getting data from the nested transactions list
+        mRef.child("orgTransactions").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()
+                ) {
+                    fetchedData.add(ds.getValue(Transaction.class));
+                }
             }
 
             @Override
@@ -91,7 +106,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 toSubmit.setEmail(etEmail.getText().toString());
                 toSubmit.setGender(etGender.getText().toString());
                 toSubmit.setName(etName.getText().toString());
-                toSubmit.setOrgTransactionHistory(orgArrayListToCopy);
+                toSubmit.setOrgTransactionHistory(fetchedData);
 
                 mRef.setValue(toSubmit).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
