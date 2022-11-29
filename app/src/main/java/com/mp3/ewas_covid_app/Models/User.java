@@ -9,11 +9,22 @@ public class User {
     private String gender;
     private Integer age;
     private Integer formPoints;
+    private String formLastAnswered;
+
+    public String getFormLastAnswered() {
+        return formLastAnswered;
+    }
+
+    public void setFormLastAnswered(String formLastAnswered) {
+        this.formLastAnswered = formLastAnswered;
+    }
+
     private ArrayList<OrgTransaction> orgTransactionHistory;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(String name, String email, String number, String gender, Integer age, Integer formPoints){
+    public User(String name, String email, String number, String gender, Integer age, Integer formPoints) {
         this.name = name;
         this.email = email;
         this.number = number;

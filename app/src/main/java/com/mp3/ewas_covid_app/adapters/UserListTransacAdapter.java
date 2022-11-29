@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,12 +22,12 @@ public class UserListTransacAdapter extends RecyclerView.Adapter<UserListTransac
     private Context contextCopy;
 
 
-    public UserListTransacAdapter(ArrayList<Transaction> userArrayList, Context baseContext){
+    public UserListTransacAdapter(ArrayList<Transaction> userArrayList, Context baseContext) {
         this.userArrayList = userArrayList;
         this.contextCopy = baseContext;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         //declare TV's from item.xml to be put used in RV
         private TextView nameTV;
         private TextView dateTV;
@@ -36,8 +35,7 @@ public class UserListTransacAdapter extends RecyclerView.Adapter<UserListTransac
         public View viewCopy;
 
 
-
-        public MyViewHolder(final View view){
+        public MyViewHolder(final View view) {
             super(view);
             viewCopy = view;
             nameTV = view.findViewById(R.id.tv_org_name);
@@ -51,7 +49,7 @@ public class UserListTransacAdapter extends RecyclerView.Adapter<UserListTransac
     @NonNull
     @Override
     public UserListTransacAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_transac_items,parent,false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_transac_items, parent, false);
         return new MyViewHolder(itemView);
     }
 
@@ -69,9 +67,6 @@ public class UserListTransacAdapter extends RecyclerView.Adapter<UserListTransac
             toProfile.putExtra("isViewing", true);
             toProfile.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             contextCopy.startActivity(toProfile);
-
-            Toast.makeText(contextCopy, "AKO si " + position, Toast.LENGTH_SHORT).show();
-
         });
     }
 

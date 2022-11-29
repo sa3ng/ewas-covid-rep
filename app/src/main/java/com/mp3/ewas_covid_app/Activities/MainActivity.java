@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Listeners
         profileBTN.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+            Intent i = new Intent(MainActivity.this, ProfileActivity.class);
+            startActivity(i);
         });
 
         //firebase rtdb reference for "last covid form answer"
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar calendar = Calendar.getInstance();
 
-                try{
+                try {
                     // if date is equal to an empty string or date does not match
                     if ((snapshot.getValue()).toString().equals("")
                             || !(snapshot.getValue().toString().equals(sdf.format(calendar.getTime())))
@@ -94,12 +95,12 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(i);
                         finish();
                     }
-                }catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     mRefUserFormAnswerDate.setValue("");
 
                     Intent i = new Intent(MainActivity.this, CovidFormActivity.class);
                     i.putExtra("userPath", "ewas-users/users/" + mUser.getUid());
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(i);
                     finish();
 
