@@ -2,15 +2,15 @@ package com.mp3.ewas_covid_app.Activities;
 
 import static com.mp3.ewas_covid_app.helper.Helper.generateBitmap;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -71,6 +71,31 @@ public class MainActivity extends AppCompatActivity {
         //Listeners
         profileBTN.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+        });
+
+        //firebase rtdb reference for "last covid form answer"
+        DatabaseReference mRefUserFormAnswerDate = mRef.child("formLastAnswered");
+        mRefUserFormAnswerDate.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.exists()) {
+                    mRefUserFormAnswerDate.setValue("");
+                }
+
+                if ((snapshot.getValue()).toString().equals("")) {
+                    Intent i = new Intent(MainActivity.this, CovidFormActivity.class);
+                    i.putExtra("userPath", "ewas-users/users/" + mUser.getUid());
+                    startActivity(i);
+                    finish();
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
 
     }
