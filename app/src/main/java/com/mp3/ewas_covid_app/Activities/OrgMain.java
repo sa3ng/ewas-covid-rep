@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarMenu;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -40,12 +42,15 @@ public class OrgMain extends AppCompatActivity {
     private TextView compNameTV;
     private TextView compEmailTV;
     private TextView compAddressTV;
+    private BottomNavigationView sortBNV;
     private Button scanBTN;
     private RecyclerView userListRV;
 
     private Organization curOrg;
     private ArrayList<Transaction> userArrayList;
     private ArrayList<String> transacUidArrayList;
+    private boolean isViewing;
+    private String selectedOrgUID;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -62,59 +67,100 @@ public class OrgMain extends AppCompatActivity {
         //Instatiate
         userArrayList = new ArrayList<>();
         userListRV = findViewById(R.id.org_main__rv);
+        sortBNV = findViewById(R.id.org_main__bottomnav);
         compNameTV = findViewById(R.id.org_main__card_view__ll__company_name_tv);
         compEmailTV = findViewById(R.id.org_main__card_view__ll__email_tv);
         compAddressTV = findViewById(R.id.org_main__card_view__ll__address_txt_tv_tv);
         scanBTN = findViewById(R.id.org_main__card_view__ll__scan_user_btn);
 
+        //Fetch Extras from Intent
+        Bundle selectedOrgBundle = getIntent().getExtras();
+        if(selectedOrgBundle != null){
+            selectedOrgUID = selectedOrgBundle.getString("orgSelectedUID");
+            isViewing = selectedOrgBundle.getBoolean("isViewing");
+        }
+
+
+
         //FB
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        mRef = FirebaseDatabase.getInstance().getReference("ewas-users/organizations/" + mUser.getUid());
-        transacRef = FirebaseDatabase.getInstance().getReference("ewas-users/organizations/" + mUser.getUid() + "/userTransactions");
+
+        //isViewing checker
+
+        if(isViewing){
+            mRef = FirebaseDatabase.getInstance().getReference("ewas-users/organizations/" + selectedOrgUID);
+
+            //get ORG PROFILE from FB
+            mRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Organization org = snapshot.getValue(Organization.class);
+                    curOrg = org;
+
+                    //Set values to textviews
+                    compNameTV.setText(curOrg.getName());
+                    compEmailTV.setText(curOrg.getEmail());
+                    compAddressTV.setText(curOrg.getAddress().toUpperCase(Locale.ROOT));
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
+            //disable rv and buttons
+            userListRV.setVisibility(View.GONE);
+            sortBNV.setVisibility(View.GONE);
+            scanBTN.setVisibility(View.GONE);
+
+        }
+        else{
+            mRef = FirebaseDatabase.getInstance().getReference("ewas-users/organizations/" + mUser.getUid());
+            transacRef = FirebaseDatabase.getInstance().getReference("ewas-users/organizations/" + mUser.getUid() + "/userTransactions");
 
 
-        //get ORG PROFILE from FB
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Organization org = snapshot.getValue(Organization.class);
-                curOrg = org;
+            //get ORG PROFILE from FB
+            mRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Organization org = snapshot.getValue(Organization.class);
+                    curOrg = org;
 
-                //Set values to textviews
-                compNameTV.setText(curOrg.getName());
-                compEmailTV.setText(curOrg.getEmail());
-                compAddressTV.setText(curOrg.getAddress().toUpperCase(Locale.ROOT));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+                    //Set values to textviews
+                    compNameTV.setText(curOrg.getName());
+                    compEmailTV.setText(curOrg.getEmail());
+                    compAddressTV.setText(curOrg.getAddress().toUpperCase(Locale.ROOT));
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
 
-        //GET TRANSACTION items from FB
+            //GET TRANSACTION items from FB
+            transacRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    userArrayList.clear();
+                    for(DataSnapshot users : snapshot.getChildren()){
+                        userArrayList.add(users.getValue(Transaction.class));
+                    }
 
-        transacRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userArrayList.clear();
-                for(DataSnapshot users : snapshot.getChildren()){
-                    userArrayList.add(users.getValue(Transaction.class));
+                    //Setting Adapter
+                    UserListTransacAdapter userAdapter = new UserListTransacAdapter(userArrayList, getBaseContext());
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                    userListRV.setLayoutManager(layoutManager);
+                    userListRV.setItemAnimator(new DefaultItemAnimator());
+                    userListRV.setAdapter(userAdapter);
+
                 }
 
-                //Setting Adapter
-                UserListTransacAdapter userAdapter = new UserListTransacAdapter(userArrayList, getBaseContext());
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                userListRV.setLayoutManager(layoutManager);
-                userListRV.setItemAnimator(new DefaultItemAnimator());
-                userListRV.setAdapter(userAdapter);
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
+                }
+            });
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        }
 
 
 
@@ -129,6 +175,7 @@ public class OrgMain extends AppCompatActivity {
                 qrScan.initiateScan();
             }
         });
+
 
     }
 
@@ -149,6 +196,7 @@ public class OrgMain extends AppCompatActivity {
 
                 Intent toScanResult = new Intent(OrgMain.this, OrgScanResultsActivity.class);
                 toScanResult.putExtra("selectedUserUID", selectedUserUID);
+                toScanResult.putExtra("orgName", curOrg.getName());
                 startActivity(toScanResult);
 
             }

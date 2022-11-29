@@ -42,6 +42,7 @@ public class OrgScanResultsActivity extends AppCompatActivity {
     private Bundle uidBundle;
     private String selectedUserUID;
     private User selectedUser;
+    private String orgName;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -58,6 +59,8 @@ public class OrgScanResultsActivity extends AppCompatActivity {
         uidBundle = getIntent().getExtras();
         if(uidBundle != null){
             selectedUserUID = uidBundle.getString("selectedUserUID");
+            orgName = uidBundle.getString("orgName");
+
         }
 
         //FB DEETS
@@ -119,9 +122,14 @@ public class OrgScanResultsActivity extends AppCompatActivity {
 
         UUID uuid=UUID.randomUUID();
 
-        //Update FB
+        //Update FB - ORG
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("ewas-users/organizations/" + curOrgUID + "/userTransactions");
         mRef.child(uuid.toString()).setValue(um);
+
+        //Update FB transac - USER
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("ewas-users/users/" + um.getTransacUID() + "/orgTransactions");
+        Transaction umUser = new Transaction(orgName, ymd.format(now), hm.format(now), curOrgUID);
+        userRef.child(uuid.toString()).setValue(umUser);
 
         finish();
     }

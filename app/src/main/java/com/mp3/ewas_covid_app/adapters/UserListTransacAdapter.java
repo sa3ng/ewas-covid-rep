@@ -64,10 +64,11 @@ public class UserListTransacAdapter extends RecyclerView.Adapter<UserListTransac
 
 
         holder.viewCopy.setOnClickListener(v -> {
-//            Intent toProfile = new Intent(v.getContext(), ProfileActivity.class);
-//            toProfile.putExtra("userSelectedUID", userArrayList.get(position).getTransacUID());
-//            toProfile.putExtra("isViewing", true);
-//            contextCopy.startActivity(toProfile);
+            Intent toProfile = new Intent(v.getContext(), ProfileActivity.class);
+            toProfile.putExtra("userSelectedUID", userArrayList.get(position).getTransacUID());
+            toProfile.putExtra("isViewing", true);
+            toProfile.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            contextCopy.startActivity(toProfile);
 
             Toast.makeText(contextCopy, "AKO si " + position, Toast.LENGTH_SHORT).show();
 
