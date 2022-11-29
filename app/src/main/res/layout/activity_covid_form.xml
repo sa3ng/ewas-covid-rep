@@ -21,6 +21,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="1" />
 
+        <TextView
+            android:id="@+id/activity_covid_form__message_tv"
+            style="@style/TextAppearance.Material3.HeadlineMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="5dp"
+            android:text="To get started for the day, fill out this form"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__logo_iv" />
+
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +43,7 @@
             app:layout_constraintBottom_toTopOf="@id/activity_covid_form__question_one_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__logo_iv" />
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__message_tv" />
 
         <LinearLayout
             android:id="@+id/activity_covid_form__question_one_container"
@@ -40,7 +53,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__logo_iv">
+            app:layout_constraintTop_toBottomOf="@id/activity_covid_form__message_tv">
 
             <TextView
                 style="@style/TextAppearance.Material3.TitleLarge"
