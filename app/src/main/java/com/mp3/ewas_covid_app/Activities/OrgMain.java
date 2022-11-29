@@ -43,12 +43,12 @@ public class OrgMain extends AppCompatActivity {
     private TextView compEmailTV;
     private TextView compAddressTV;
     private BottomNavigationView sortBNV;
-    private Button scanBTN;
     private RecyclerView userListRV;
+    private Button scanBTN;
+    private Button sortDayBTN;
 
     private Organization curOrg;
     private ArrayList<Transaction> userArrayList;
-    private ArrayList<String> transacUidArrayList;
     private boolean isViewing;
     private String selectedOrgUID;
 
@@ -72,6 +72,7 @@ public class OrgMain extends AppCompatActivity {
         compEmailTV = findViewById(R.id.org_main__card_view__ll__email_tv);
         compAddressTV = findViewById(R.id.org_main__card_view__ll__address_txt_tv_tv);
         scanBTN = findViewById(R.id.org_main__card_view__ll__scan_user_btn);
+        sortBNV = findViewById(R.id.org_main__bottomnav__sort_day);
 
         //Fetch Extras from Intent
         Bundle selectedOrgBundle = getIntent().getExtras();
@@ -174,6 +175,9 @@ public class OrgMain extends AppCompatActivity {
                 qrScan.setBeepEnabled(true);
                 qrScan.initiateScan();
             }
+        });
+
+        sortDayBTN.setOnClickListener(v -> {
         });
 
 
