@@ -19,7 +19,7 @@ public class User {
         this.formLastAnswered = formLastAnswered;
     }
 
-    private ArrayList<OrgTransaction> orgTransactionHistory;
+    private ArrayList<Transaction> orgTransactionHistory;
 
     public User() {
     }
@@ -34,11 +34,11 @@ public class User {
 
     }
 
-    public ArrayList<OrgTransaction> getOrgTransactionHistory() {
+    public ArrayList<Transaction> getOrgTransactionHistory() {
         return orgTransactionHistory;
     }
 
-    public void setOrgTransactionHistory(ArrayList<OrgTransaction> orgTransactionHistory) {
+    public void setOrgTransactionHistory(ArrayList<Transaction> orgTransactionHistory) {
         this.orgTransactionHistory = orgTransactionHistory;
     }
 
