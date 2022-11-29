@@ -297,6 +297,7 @@
             app:layout_constraintTop_toBottomOf="@id/activity_covid_form__question_five_container" />
 
         <Button
+            android:id="@+id/activity_covid_form__submit_btn"
             style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
