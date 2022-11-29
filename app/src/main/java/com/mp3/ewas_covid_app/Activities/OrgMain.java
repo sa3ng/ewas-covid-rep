@@ -180,6 +180,13 @@ public class OrgMain extends AppCompatActivity {
             }
         });
 
+        logoutBTN.setOnClickListener(v -> {
+            mAuth.signOut();
+            Intent signOutIntent = new Intent(OrgMain.this, LoginActivity.class);
+            signOutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(signOutIntent);
+            finish();
+        });
 
     }
 

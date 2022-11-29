@@ -106,7 +106,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 toSubmit.setEmail(etEmail.getText().toString());
                 toSubmit.setGender(etGender.getText().toString());
                 toSubmit.setName(etName.getText().toString());
-                toSubmit.setOrgTransactions(fetchedData);
 
                 mRef.setValue(toSubmit).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -114,6 +113,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
                     }
                 });
+
+                mRef.child("orgTransactions").setValue(fetchedData);
             }
 
         });
