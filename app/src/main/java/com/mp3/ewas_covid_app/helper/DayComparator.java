@@ -13,7 +13,7 @@ public class DayComparator implements Comparator<Transaction> {
         try {
             Date date = new SimpleDateFormat("yyyy/MM/dd").parse(t1.getDate());
             Date dateToCompare = new SimpleDateFormat("yyyy/MM/dd").parse(t2.getDate());
-            return date.compareTo(dateToCompare);
+            return dateToCompare.compareTo(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }

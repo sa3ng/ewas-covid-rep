@@ -74,7 +74,7 @@
 
             <Button
                 android:id="@+id/org_main__card_view__ll__scan_user_btn"
-                style="@style/Widget.Material3.Button"
+                style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -96,7 +96,7 @@
         android:layout_height="0dp"
 
         android:background="@color/cardview_dark_background"
-        app:layout_constraintBottom_toTopOf="@id/org_main__bottomnav"
+        app:layout_constraintBottom_toTopOf="@id/org_main_profile__logout_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/org_main__card_view"
@@ -105,11 +105,18 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/org_main__bottomnav"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/org_main_profile__logout_btn"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/org_main_bottomnav" />
+        android:layout_weight="1"
+        android:text="Logout"
+
+        app:layout_constraintWidth_percent=".75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/org_main__rv"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
