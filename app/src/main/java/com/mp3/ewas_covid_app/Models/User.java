@@ -10,7 +10,7 @@ public class User {
     private Integer age;
     private Integer formPoints;
     private String formLastAnswered;
-    private ArrayList<Transaction> orgTransactionHistory;
+    private ArrayList<Transaction> orgTransactions;
 
     public User() {
     }
@@ -25,12 +25,12 @@ public class User {
 
     }
 
-    public ArrayList<Transaction> getOrgTransactionHistory() {
-        return orgTransactionHistory;
+    public ArrayList<Transaction> getOrgTransaction() {
+        return orgTransactions;
     }
 
-    public void setOrgTransactionHistory(ArrayList<Transaction> orgTransactionHistory) {
-        this.orgTransactionHistory = orgTransactionHistory;
+    public void setOrgTransactionHistory(ArrayList<Transaction> orgTransactions) {
+        this.orgTransactions = orgTransactions;
     }
 
     public Integer getFormPoints() {
