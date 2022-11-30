@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
@@ -135,6 +136,9 @@ public class OrgScanResultsActivity extends AppCompatActivity {
         Transaction umUser = new Transaction(orgName, ymd.format(now), hm.format(now), curOrgUID);
         userRef.child(uuid.toString()).setValue(umUser);
 
+        Intent toOrgMain = new Intent(OrgScanResultsActivity.this, OrgMain.class);
+        toOrgMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(toOrgMain);
         finish();
     }
 }

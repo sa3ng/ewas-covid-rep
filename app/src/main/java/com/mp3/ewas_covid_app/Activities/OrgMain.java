@@ -209,6 +209,7 @@ public class OrgMain extends AppCompatActivity {
                 toScanResult.putExtra("selectedUserUID", selectedUserUID);
                 toScanResult.putExtra("orgName", curOrg.getName());
                 startActivity(toScanResult);
+                finish();
 
             }
         }else {
