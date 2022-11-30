@@ -11,8 +11,8 @@ public class DayComparator implements Comparator<Transaction> {
     @Override
     public int compare(Transaction t1, Transaction t2) {
         try {
-            Date date = new SimpleDateFormat("yyyy/MM/dd HH/mm").parse(t1.getDate() + " " + t1.getTime());
-            Date dateToCompare = new SimpleDateFormat("yyyy/MM/dd HH/mm").parse(t2.getDate() + " " + t1.getTime());
+            Date date = new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(t1.getDate() + " " + t1.getTime() );
+            Date dateToCompare = new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(t2.getDate() + " " + t1.getTime());
             return dateToCompare.compareTo(date);
         } catch (ParseException e) {
             e.printStackTrace();
