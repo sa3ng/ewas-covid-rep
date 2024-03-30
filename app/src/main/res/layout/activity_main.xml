@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/activity_main__username_tv"
-        style="@style/TextAppearance.Material3.DisplayMedium"
+        style="@style/TextAppearance.Material3.DisplaySmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

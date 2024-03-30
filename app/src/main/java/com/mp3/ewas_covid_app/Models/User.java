@@ -9,11 +9,13 @@ public class User {
     private String gender;
     private Integer age;
     private Integer formPoints;
-    private ArrayList<OrgTransaction> orgTransactionHistory;
+    private String formLastAnswered;
+    private ArrayList<Transaction> orgTransactions;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(String name, String email, String number, String gender, Integer age, Integer formPoints){
+    public User(String name, String email, String number, String gender, Integer age, Integer formPoints) {
         this.name = name;
         this.email = email;
         this.number = number;
@@ -23,12 +25,12 @@ public class User {
 
     }
 
-    public ArrayList<OrgTransaction> getOrgTransactionHistory() {
-        return orgTransactionHistory;
+    public ArrayList<Transaction> getOrgTransaction() {
+        return orgTransactions;
     }
 
-    public void setOrgTransactionHistory(ArrayList<OrgTransaction> orgTransactionHistory) {
-        this.orgTransactionHistory = orgTransactionHistory;
+    public void setOrgTransactions(ArrayList<Transaction> orgTransactions) {
+        this.orgTransactions = orgTransactions;
     }
 
     public Integer getFormPoints() {
@@ -77,5 +79,13 @@ public class User {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getFormLastAnswered() {
+        return formLastAnswered;
+    }
+
+    public void setFormLastAnswered(String formLastAnswered) {
+        this.formLastAnswered = formLastAnswered;
     }
 }

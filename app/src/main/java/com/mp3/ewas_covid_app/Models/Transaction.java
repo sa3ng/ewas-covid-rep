@@ -4,14 +4,24 @@ public class Transaction {
     String name;
     String date;
     String time;
-    String orgUID;
+    String transacUID;
 
     public Transaction(){}
 
-    public Transaction(String name, String date, String time){
+    public Transaction(String name, String date, String time, String transacUID){
         this.name = name;
         this.date = date;
         this.time = time;
+        this.transacUID = transacUID;
+    }
+
+
+    public String getTransacUID() {
+        return transacUID;
+    }
+
+    public void setTransacUID(String transacUID) {
+        this.transacUID = transacUID;
     }
 
     public String getName() {

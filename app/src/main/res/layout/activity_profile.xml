@@ -110,10 +110,10 @@
                             android:textAlignment="center"
 
 
-                            app:layout_constraintWidth_percent=".5"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/white_border"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/white_border"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent=".5" />
 
                         <TextView
                             android:id="@+id/tv_ageStr"
@@ -124,9 +124,9 @@
                             android:text="Age"
                             android:textAlignment="center"
 
-                            app:layout_constraintTop_toBottomOf="@id/tv_email"
+                            app:layout_constraintEnd_toEndOf="@id/white_border"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="@id/white_border"/>
+                            app:layout_constraintTop_toBottomOf="@id/tv_email" />
 
                         <View
                             android:id="@+id/white_border"
@@ -134,11 +134,11 @@
                             android:layout_height="0dp"
                             android:background="@android:color/white"
 
-                            app:layout_constraintHeight_percent="1"
-                            app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tv_contact_num"
+                            app:layout_constraintHeight_percent="1"
                             app:layout_constraintStart_toEndOf="@id/tv_email"
-                            app:layout_constraintEnd_toStartOf="@id/tv_contact_num"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/tv_contact_num"
@@ -149,10 +149,10 @@
                             android:text="Number Here"
                             android:textAlignment="center"
 
-                            app:layout_constraintWidth_percent=".5"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@id/white_border"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent=".5" />
 
                         <TextView
                             android:id="@+id/tv_gender"
@@ -163,9 +163,9 @@
                             android:text="Gender"
                             android:textAlignment="center"
 
-                            app:layout_constraintTop_toBottomOf="@id/tv_contact_num"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/white_border"/>
+                            app:layout_constraintStart_toEndOf="@id/white_border"
+                            app:layout_constraintTop_toBottomOf="@id/tv_contact_num" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -198,6 +198,7 @@
                 app:layout_constraintTop_toBottomOf="@id/profile_card_info" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/activity_profile_rv_cardview_container"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -219,14 +220,42 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
-                        app:fastScrollEnabled="false"
                         android:background="@color/cardview_dark_background"
+                        app:fastScrollEnabled="false"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="24dp"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_profile_rv_cardview_container">
+
+                <Button
+                    android:id="@+id/activity_profile__edit_profile_btn"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="Edit Profile" />
+
+
+                <Button
+                    android:id="@+id/activity_profile__logout_btn"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Logout" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
